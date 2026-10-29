@@ -1,6 +1,8 @@
-const { contextBridge, ipcRenderer } = require('electron');
-contextBridge.exposeInMainWorld('studio', {
-  importLyrics: () => ipcRenderer.invoke('open-text'),
-  saveProject: (data) => ipcRenderer.invoke('save-project', data),
-  openProject: () => ipcRenderer.invoke('open-project')
-});
+const {contextBridge,ipcRenderer}=require('electron');
+contextBridge.exposeInMainWorld('studio',Object.freeze({
+importLyrics:()=>ipcRenderer.invoke('open-text'),
+saveProject:p=>ipcRenderer.invoke('save-project',p),
+openProject:()=>ipcRenderer.invoke('open-project'),
+autosave:p=>ipcRenderer.invoke('autosave',p),
+loadAutosave:()=>ipcRenderer.invoke('load-autosave')
+}));
