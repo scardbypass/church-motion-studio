@@ -1,6 +1,6 @@
 <div align="center">
 
-# ✨ Church Motion Studio
+# ✨ SCARD-PROJECT Lirik
 
 ### Worship Lyrics • Motion Graphics • Windows Editor
 
@@ -8,18 +8,18 @@
 
 ![Status](https://img.shields.io/badge/status-early%20prototype-orange)
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-blue)
-![Version](https://img.shields.io/badge/version-0.1.0-purple)
+![Version](https://img.shields.io/badge/version-0.2.0-purple)
 
 </div>
 
 > [!IMPORTANT]
-> **Versi 0.1.0 masih prototipe awal.** Editor lirik dasar sudah tersedia dalam source code, tetapi **belum** ada render MP4, ekspor ZIP, keyframe timeline, atau plugin/preset komunitas. Tampilan konsep bukan bukti bahwa seluruh fitur sudah berfungsi. Belum ada jaminan bebas bug pada semua perangkat.
+> **Versi 0.2.0 masih prototipe awal.** Editor lirik dasar sudah tersedia dalam source code, tetapi **belum** ada render MP4, ekspor ZIP, keyframe timeline, atau plugin/preset komunitas. Tampilan konsep bukan bukti bahwa seluruh fitur sudah berfungsi. Belum ada jaminan bebas bug pada semua perangkat. Perubahan v0.2 belum diuji langsung pada Windows.
 
 ---
 
 ## 📖 Tentang aplikasi
 
-**Church Motion Studio** adalah proyek aplikasi desktop Windows untuk membuat animasi teks lirik lagu gereja tanpa memerlukan audio. Rancangan akhirnya memungkinkan setiap scene diedit sendiri, memakai background warna, gambar, video, atau transparan, lalu diekspor sebagai video terpisah dalam satu ZIP.
+**SCARD-PROJECT Lirik** adalah proyek aplikasi desktop Windows untuk membuat animasi teks lirik lagu gereja tanpa memerlukan audio. Rancangan akhirnya memungkinkan setiap scene diedit sendiri, memakai background warna, gambar, video, atau transparan, lalu diekspor sebagai video terpisah dalam satu ZIP.
 
 - **Target platform:** Windows 10/11 64-bit
 - **Teknologi prototipe:** Electron, HTML, CSS, JavaScript
@@ -68,14 +68,14 @@ Aku menang
 
 **Hasil impor:** 3 scene, karena satu **baris kosong** memisahkan blok. Dua baris teks yang berurutan tetap berada dalam satu scene. Durasi awal dapat dipilih sebelum impor, misalnya 8 detik per scene.
 
-## ✅ Fitur versi 0.1.0
+## ✅ Fitur versi 0.2.0
 
 | Fitur | Status | Keterangan |
 |:--|:--:|:--|
 | Import TXT | ✅ Kode tersedia | Pilih file Notepad dari komputer |
 | Pemisahan blok lirik | ✅ Kode tersedia | Baris kosong = scene baru |
-| Edit teks per scene | ✅ Kode tersedia | Mengubah isi lirik |
-| Durasi scene | ✅ Kode tersedia | Durasi disimpan di data proyek |
+| Edit teks per layer/baris | ✅ Kode tersedia | Mengubah isi lirik |
+| Tambah/hapus layer dan scene | ✅ Kode tersedia | Baris lirik independen |\n| Undo/Redo dasar | ✅ Kode tersedia | Riwayat perubahan proyek |\n| Durasi scene | ✅ Kode tersedia | Durasi disimpan di data proyek |
 | Warna background & teks | ✅ Kode tersedia | Color picker |
 | Preview animasi | ✅ Kode tersedia | None, Fade, Slide Up, Zoom In |
 | Light / Dark Mode | ✅ Kode tersedia | Tema tersimpan secara lokal |
@@ -89,7 +89,7 @@ Aku menang
 | Windows installer siap rilis | 🧪 Belum teruji | Konfigurasi build awal tersedia |
 
 > [!NOTE]
-> Durasi scene saat ini merupakan metadata proyek. Preview CSS belum otomatis berhenti berdasarkan durasi tersebut. Auto Save disimpan lokal pada data aplikasi Electron, **belum** sebagai file proyek di folder Documents.
+> Durasi scene saat ini merupakan metadata proyek. Preview CSS belum otomatis berhenti berdasarkan durasi tersebut. Auto Save memakai file recovery di folder userData Electron, **belum** sebagai file proyek di folder Documents.
 
 ## 💻 Persyaratan pengembangan
 
@@ -161,7 +161,7 @@ npm start
 
 ```text
 church-motion-studio/
-├── index.html       # UI editor, scene, preview, autosave
+├── index.html       # Struktur tampilan editor\n├── src/             # Modul data, interaksi, dan styling\n│   ├── model.js\n│   ├── app.js\n│   └── style.css
 ├── main.js          # Proses utama Electron & dialog file
 ├── preload.js       # API aman renderer ↔ Electron
 ├── package.json     # Script, dependency, konfigurasi build
@@ -184,10 +184,10 @@ Script ini memanggil electron-builder. **Konfigurasi packaging saat ini belum di
 
 ### V1 — Editor lirik yang stabil
 - [x] Import TXT per blok
-- [x] Editor teks, warna, durasi
+- [x] Editor teks per baris, warna, durasi
 - [x] Preview animasi dasar
 - [x] Dark/Light Mode
-- [x] Save/Open proyek dasar
+- [x] Save/Open proyek dan recovery dasar
 - [ ] Timeline dengan keyframe
 - [ ] Background gambar/video/transparan
 - [ ] Autosave file & recovery yang lebih aman
@@ -214,7 +214,7 @@ Script ini memanggil electron-builder. **Konfigurasi packaging saat ini belum di
 ## 🔐 Data & privasi
 
 - Aplikasi prototipe berjalan lokal; tidak ada server akun.
-- Autosave memakai `localStorage` pada profil Electron.
+- Autosave sekarang memakai file recovery atomik di folder userData Electron.
 - File `.cmsproj` disimpan ke lokasi yang dipilih pengguna.
 - Cadangkan proyek penting secara manual.
 - Jangan menyimpan file proyek hanya di folder source code yang sering dihapus atau di-reset.
@@ -229,7 +229,7 @@ Belum ada file `LICENSE` khusus untuk kode prototipe ini. Jangan mengasumsikan i
 
 <div align="center">
 
-**Church Motion Studio** ✦ *Create Beautiful Lyrics Motion for Worship*
+**SCARD-PROJECT Lirik** ✦ *Create Beautiful Lyrics Motion for Worship*
 
 Made for creative church media workflows.
 
