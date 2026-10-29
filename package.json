@@ -1,24 +1,28 @@
 {
-  "name": "church-motion-studio",
-  "version": "0.1.0",
+  "name": "scard-project-lirik",
+  "version": "0.2.0",
   "private": true,
-  "description": "Offline worship lyrics motion editor",
+  "description": "SCARD-PROJECT Lirik offline Windows lyric motion editor",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --win nsis"
+    "dist": "electron-builder --win nsis",
+    "check": "node --check main.js && node --check preload.js && node --check src/app.js && node --check src/model.js"
   },
   "devDependencies": {
     "electron": "^33.4.11",
     "electron-builder": "^25.1.8"
   },
   "build": {
-    "appId": "id.churchmotion.studio",
-    "productName": "Church Motion Studio",
+    "appId": "id.scardproject.lirik",
+    "productName": "SCARD-PROJECT Lirik",
     "files": [
       "main.js",
+      "preload.js",
       "index.html",
-      "README.md"
+      "src/**/*",
+      "README.md",
+      "package.json"
     ],
     "win": {
       "target": "nsis"
